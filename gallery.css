@@ -1,0 +1,263 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background-image: url("assets/Backdrop.png");
+}
+
+model-viewer {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@font-face {
+     font-family: "monument";
+     src: url("assets/fonts/MonumentGrotesk-Regular.ttf");
+   }
+
+@font-face {
+  font-family: "repro";
+  src: url("assets/fonts/MonumentGrotesk-Regular.ttf");
+}
+
+.toggleRoom{
+  color:rgba(255,255,255,.8);
+  background:transparent;
+  font-family: "monument";
+  font-size:20px;
+}
+
+.toggleRoom:hover{
+  color:rgba(255,255,255,1);
+}
+
+.moreInfoHall{
+    display: none;
+    background-color: transparent;
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    border: none;
+}
+
+.moreInfoWing{
+    display: none;
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+}
+
+.moreInfoRoom{
+    display: none;
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: none;
+
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+
+  justify-content: center;
+  align-items: center;
+}
+
+.popupContent {
+  background: rgba(255,255,255,.6);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 60%;
+  height: 60%;
+  align-content: center;
+  box-shadow: 0px 0px 50px white;
+}
+
+.closePopup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background-color: rgba(0,0,0,0);
+  border:0px;
+  color:white;
+  font-family: "repro";
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.column {
+  flex: 50%;
+  height:100%;
+  width: 100%;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+#objName {
+  display: flex;
+  font-size:40px;
+  padding:0px;
+  font-family: "monument";
+  line-height: 2;
+  padding: 5px;
+}
+
+#date {
+  display: flex;
+  font-size:20px;
+  padding:0px;
+  font-family: "repro";
+  line-height: .8;
+  padding: 5px;
+}
+#location {
+  display: flex;
+  font-size:20px;
+  font-family: "repro";
+  line-height: .8;
+  padding: 5px;
+}
+#description {
+  display: flex;
+  font-size:20px;
+  font-family: "repro";
+  line-height: 1.2;
+  padding: 5px;
+}
+
+#image {
+  width:50%;
+  height:auto;
+}
+
+#postButton {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 0px 20px 10px 20px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0px 0px 10px white;
+
+  background: rgba(255, 255, 255, 0.7);
+  color: black;
+  font-family: "repro";
+  font-size: 14px;
+
+  display: flex;
+  line-height: 1.5;
+  align-items: center;
+
+  cursor: pointer;
+  z-index: 10; /* sits above model-viewer */
+}
+
+#postButton:hover{
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+::placeholder {
+  color: white;
+  opacity: 1;
+  font-family: "repro";
+}
+
+.inputTitle {
+  height:50%;
+	min-width: 100%;
+  min-height: 100%;
+  background-color: transparent;
+  font-size: 30px;
+  font-family: "monument";
+  padding:0px 5px 20px 5px;
+  color:white;
+  border: none;
+  line-height: .5;
+}
+
+.input {
+  height: 50%;
+	min-width: 100%;
+  min-height: 100%;
+  background-color: transparent;
+  font-size: 15px;
+  font-family: "repro";
+  padding:0px 5px 10px 5px;
+  color:white;
+  border: none;
+  line-height: .4;
+}
+
+textarea {
+	min-width: 100%;
+  background-color:transparent;
+  color:white;
+  font-family: "repro";
+  font-size:15px;
+  padding:5px;
+  border: none;
+  line-height: 1.2;
+}
+
+iframe {
+  width: 30vw;
+  height:50vh;
+  background: transparent !important;
+}
+
+#rooms{
+  border: 1px solid white; 
+  border-radius: 5px;
+  font-family: "repro";
+  background-color: transparent;
+  color: white;
+  width: 100%;
+  font-size: 15px;
+  height:90%;
+  display: flex;
+  align-items: flex-end;
+}
+
+#shareButton{
+  padding: 0px 20px 10px 20px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0px 0px 10px white;
+
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-family: "repro";
+  font-size: 14px;
+
+  display: flex;
+  line-height: 1.5;
+  align-items: center;
+
+  margin: 10px
+}
+
+#shareButton:hover{
+  background: rgba(255, 255, 255, 0.7);
+  color: black;
+}

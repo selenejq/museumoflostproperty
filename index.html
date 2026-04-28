@@ -1,0 +1,246 @@
+<html>
+<head>
+  <link rel="stylesheet" href="gallery.css">
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js" type="module"></script>
+
+<model-viewer id="visitRoom" interpolation-decay="200" ar-status="not-presenting" camera-controls="" camera-orbit="45deg 90deg 2m" camera-target="0m 0m 0m" max-camera-orbit="auto 100deg auto" min-camera-orbit="auto 80deg auto" src="https://freight.cargo.site/m/S2909844847762649384444110588220/helix-compressed.glb" style="width:100vw; height:100vh; background:black" touch-action="pan-y">
+
+  <div class="toggleRoom" slot="hotspot-0" data-position="0m 0m 0m" data-orbit="45deg 90deg 0m" data-target="-93m 0m -93m">Memory Hall</div>
+  
+   <div class="toggleRoom" slot="hotspot-1" data-position="-60m 0m 0m" data-orbit="-60deg 100deg 0m" data-target="-90m 0m 30m">Wanderers' Wing</div>
+  
+   <div class="toggleRoom" slot="hotspot-2" data-position="0m 0m -55m" data-orbit="140deg 80deg 0m" data-target="30m 0m -90m">Room of the Reunited</div>
+
+  <button 
+    class="moreInfoHall" 
+    slot="hotspot-3" 
+    data-position="-2.8301755130458623m -0.27424234846223605m -0.6941196715415643m" 
+    data-orbit="45deg 90deg 0m"
+    data-title="Scissors"
+    data-date="April 2026"
+    data-location="London"
+    data-description="These scissors were my lucky pair..."
+    data-image="assets/obj/IMG_9544.JPG">
+  </button>
+  <button 
+    class="moreInfoHall" 
+    slot="hotspot-4" 
+    data-position="-2.1221085734038416m 1.7267947199473286m -2.1266341634587m" 
+    data-orbit="45deg 90deg 0m"
+    data-title="Unicorn"
+    data-date="April 2026"
+    data-location="London"
+    data-description="I got this unicorn with a friend at a toy fair..."
+    data-image="assets/obj/IMG_9542.JPG">
+    
+  </button>
+  <button 
+    class="moreInfoWing" 
+    slot="hotspot-5" 
+    data-position="-58.94418901198776m -0.1510392399688334m 6.271021525808518m" 
+    data-orbit="45deg 90deg 0m"
+    data-title="Cap"
+    data-date="April 2026"
+    data-location="London"
+    data-description="A gift from a mentor, this cap now serves as a cozy bed for three chipmunks..."
+    data-image="assets/obj/IMG_9548.JPG">
+  </button>
+
+    <button 
+    class="moreInfoRoom" 
+    slot="hotspot-6" 
+    data-position="8.289996047866081m 3.318293210719137m -51.586165005120044m" 
+    data-orbit="45deg 90deg 0m"
+    data-title="Skateboard"
+    data-date="April 2026"
+    data-location="London"
+    data-description="Thank you so much to the person who returned this to me..."
+    data-image="assets/obj/IMG_9553.JPG">
+  </button>
+
+</model-viewer>
+
+<div id="infoPopup" class="popup">
+  <div class="popupContent">
+    <button class="closePopup">✕</button>
+    <div class="row">
+      <div class="column">
+        <img src="/assets/obj/IMG_9544.JPG" id="image">
+      </div>
+      <div class="column">
+        <div id="objName">Scissors</div>
+        <div id="date">April 2026</div>
+        <div id="location">London</div>
+        <div id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae sapien ligula. Sed sapien metus, faucibus scelerisque porta condimentum, porttitor ac est. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam et pharetra mi. Cras pulvinar ultricies magna nec viverra. Pellentesque fringilla risus in urna lobortis, nec ornare erat convallis. Sed scelerisque sem at massa sodales, quis varius nisl finibus.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="postButton">
+  have you lost something?
+</div>
+
+<div id="postPopup" class="popup">
+  <div class="popupContent">
+    <button class="closePopup">✕</button>
+    <div class="row">
+      <div class="column">
+        <iframe src="https://my.spline.design/hanastarterfile-OHz79eZBzlpkrUYEdMVWmNir-ydy/" frameborder="0" width="100%" height="100%"></iframe>
+        <form>
+          <input type="file" id="myFile" name="filename">
+        </form>
+      </div>
+      <div class="column">
+        <div style="border: 1px solid white; border-radius: 5px; margin:10px; height:50px; align-items:center">
+          <input class="inputTitle" id="objNameForm" name="objName" placeholder="Object Name" type="text">
+        </div>
+        <div style="border: 1px solid white; border-radius: 5px; margin:10px; height:35px; align-items:center">
+          <input class="input" id="dateForm" name="date" placeholder="Date last seen" type="text">
+        </div>
+        <div style="border: 1px solid white; border-radius: 5px; margin:10px;  height:35px; align-items:center">
+          <input class="input" id="locationForm" name="location" placeholder="Location last seen" type="text">
+        </div>
+        <div style="margin:10px;  height:35px; align-items:center">
+          <select name="rooms" id="rooms">
+            <option value="memory">Memory Hall</option>
+            <option value="wander">Wanderers' Wing</option>
+            <option value="reunite">Room for the Reunited</option>
+          </select>
+        </div>
+        <div style="border: 1px solid white; border-radius: 5px; margin:10px; ">
+          <textarea cols="50" id="descriptionForm" name="description" rows="8">Please describe your lost object and its significance</textarea>
+        </div>
+        <button id="shareButton">share to museum</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="module">
+  const modelViewer2 = document.querySelector("#visitRoom");
+
+  const moreInfoHallButtons = modelViewer2.querySelectorAll('.moreInfoHall');
+  const moreInfoWingButtons = modelViewer2.querySelectorAll('.moreInfoWing');
+  const moreInfoRoomButtons = modelViewer2.querySelectorAll('.moreInfoRoom');
+
+  const popup = document.getElementById("infoPopup");
+  const shareButton = document.getElementById("shareButton");
+
+  const postButton = document.getElementById("postButton");
+  const postPopup = document.getElementById("postPopup");
+
+  const objName = document.getElementById("objName");
+  const date = document.getElementById("date");
+  const location = document.getElementById("location");
+  const description = document.getElementById("description");
+  const image = document.querySelector(".popupContent img");
+
+  let activeRoom = null;
+
+  // clicking room hotspots
+  const annotationClicked = (annotation) => {
+    let dataset = annotation.dataset;
+
+    modelViewer2.cameraTarget = dataset.target;
+    modelViewer2.cameraOrbit = dataset.orbit;
+    modelViewer2.fieldOfView = '70deg';
+
+    const slot = annotation.getAttribute('slot');
+    activeRoom = slot;
+
+    // hide everything first
+    [...moreInfoHallButtons, ...moreInfoWingButtons, ...moreInfoRoomButtons].forEach(btn => {
+      btn.style.display = 'none';
+      btn.style.pointerEvents = 'none';
+    });
+
+    // show + enable based on room
+    if (slot === 'hotspot-0') {
+      moreInfoHallButtons.forEach(btn => {
+        btn.style.display = 'block';
+        btn.style.pointerEvents = 'auto';
+      });
+    }
+
+    if (slot === 'hotspot-1') {
+      moreInfoWingButtons.forEach(btn => {
+        btn.style.display = 'block';
+        btn.style.pointerEvents = 'auto';
+      });
+    }
+
+    if (slot === 'hotspot-2') {
+      moreInfoRoomButtons.forEach(btn => {
+        btn.style.display = 'block';
+        btn.style.pointerEvents = 'auto';
+      });
+    }
+  }
+
+  modelViewer2.querySelectorAll('.toggleRoom').forEach((hotspot) => {
+    hotspot.addEventListener('click', () => annotationClicked(hotspot));
+  });
+
+  // open popup
+  [...moreInfoHallButtons, ...moreInfoWingButtons, ...moreInfoRoomButtons].forEach((button) => {
+    button.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      // block if wrong room
+      if (
+        (button.classList.contains('moreInfoHall') && activeRoom !== 'hotspot-0') ||
+        (button.classList.contains('moreInfoWing') && activeRoom !== 'hotspot-1') ||
+        (button.classList.contains('moreInfoRoom') && activeRoom !== 'hotspot-2')
+      ) return;
+
+      const data = button.dataset;
+
+      objName.textContent = data.title;
+      date.textContent = data.date;
+      location.textContent = data.location;
+      description.textContent = data.description;
+      image.src = data.image;
+
+      popup.style.display = 'flex';
+    });
+  });
+
+  // open posting pop up
+  postButton.addEventListener("click", () => {
+    postPopup.style.display = "flex";
+  });
+
+  // close popups
+  const closeButtons = document.querySelectorAll(".closePopup");
+
+  closeButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      popup.style.display = "none";
+      postPopup.style.display = "none";
+    });
+  });
+
+  // close popup after sharing
+  shareButton.addEventListener('click', () => {
+    postPopup.style.display = 'none';
+  });
+
+  // click outside to close
+  postPopup.addEventListener('click', (e) => {
+    if (e.target === postPopup) {
+      postPopup.style.display = 'none';
+    }
+  });
+
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) {
+      popup.style.display = 'none';
+    }
+  });
+</script>
+
+</html>
