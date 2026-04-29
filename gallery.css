@@ -3,7 +3,7 @@ html, body {
   padding: 0;
   height: 100%;
   overflow: hidden;
-  background-color:transparent;
+  background-color:black;
 }
 
 model-viewer {
@@ -149,6 +149,10 @@ model-viewer {
 }
 
 #postButton {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  
   position: fixed;
   bottom: 30px;
   left: 50%;
@@ -169,7 +173,7 @@ model-viewer {
   align-items: center;
 
   cursor: pointer;
-  z-index: 10; /* sits above model-viewer */
+  z-index: 10; 
 }
 
 #postButton:hover{
@@ -254,10 +258,47 @@ iframe {
   line-height: 1.5;
   align-items: center;
 
-  margin: 10px
+  margin: 20px
 }
 
 #shareButton:hover{
   background: rgba(255, 255, 255, 0.7);
   color: black;
+}
+
+#loaderWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* vertical center */
+  align-items: center;      /* horizontal center */
+
+  z-index: 999;
+  pointer-events: none;
+
+  transition: opacity 0.6s ease;
+}
+
+#loader {
+  font-family: "monument";
+  font-size: 22px;
+  color: white;
+  line-height: 1;
+}
+
+#progress {
+  font-family: "repro";
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 5px;
+  line-height: 1;
+}
+
+#loaderWrapper.hidden {
+  opacity: 0;
 }

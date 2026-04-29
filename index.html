@@ -5,7 +5,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js" type="module"></script>
 
-<model-viewer id="visitRoom" interpolation-decay="200" ar-status="not-presenting" camera-controls="" camera-orbit="45deg 90deg 2m" camera-target="0m 0m 0m" max-camera-orbit="auto 100deg auto" min-camera-orbit="auto 80deg auto" src="https://freight.cargo.site/m/S2909844847762649384444110588220/helix-compressed.glb" style="width:100vw; height:100vh;" touch-action="pan-y">
+<model-viewer id="visitRoom" poster="assets/loader.png" loading="eager" interpolation-decay="200" ar-status="not-presenting" camera-controls="" camera-orbit="45deg 90deg 2m" camera-target="0m 0m 0m" max-camera-orbit="auto 100deg auto" min-camera-orbit="auto 80deg auto" src="https://freight.cargo.site/m/S2909844847762649384444110588220/helix-compressed.glb" style="width:100vw; height:100vh;" touch-action="pan-y">
 
   <div class="toggleRoom" slot="hotspot-0" data-position="0m 0m 0m" data-orbit="45deg 90deg 0m" data-target="-93m 0m -93m">Memory Hall</div>
   
@@ -61,6 +61,11 @@
   </button>
 
 </model-viewer>
+
+<div id="loaderWrapper">
+  <div id="loader">loading the museum...</div>
+  <div id="progress">0%</div>
+</div>
 
 <div id="infoPopup" class="popup">
   <div class="popupContent">
@@ -121,6 +126,37 @@
 
 
 <script type="module">
+  const viewer = document.querySelector("#visitRoom");
+  const progress = document.getElementById("progress");
+  const loader = document.getElementById("loader");
+  const loaderWrapper = document.getElementById("loaderWrapper");
+  const postButton = document.getElementById("postButton");
+
+  viewer.addEventListener("load", () => {
+    loaderWrapper.classList.add("hidden");
+
+    setTimeout(() => {
+      loaderWrapper.style.display = "none";
+    }, 600);
+
+    postButton.style.opacity = "1";
+    postButton.style.pointerEvents = "auto";
+  });
+
+
+  viewer.addEventListener("progress", (e) => {
+    const percent = Math.round(e.detail.totalProgress * 100);
+    progress.textContent = `${percent}%`;
+
+    if (percent < 30) {
+      loader.textContent = "entering memory hall...";
+    } else if (percent < 70) {
+      loader.textContent = "walking...";
+    } else {
+      loader.textContent = "almost there...";
+    }
+  });
+
   const modelViewer2 = document.querySelector("#visitRoom");
 
   const moreInfoHallButtons = modelViewer2.querySelectorAll('.moreInfoHall');
@@ -130,7 +166,6 @@
   const popup = document.getElementById("infoPopup");
   const shareButton = document.getElementById("shareButton");
 
-  const postButton = document.getElementById("postButton");
   const postPopup = document.getElementById("postPopup");
 
   const objName = document.getElementById("objName");
